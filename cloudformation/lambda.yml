@@ -1,0 +1,14 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: Lambda functions for Reporting Agent project
+
+Resources:
+  ReportingAgentLambda:
+    Type: AWS::Lambda::Function
+    Properties:
+      FunctionName: ReportingAgentLambda
+      Runtime: python3.11
+      Handler: app.handler
+      Code:
+        S3Bucket: genieai-lambda-code
+        S3Key: reporting-agent.zip
+      Role: !GetAtt ReportingAgentRole.Arn
